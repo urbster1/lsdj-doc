@@ -7,20 +7,23 @@ navigate between the screens by pressing \textsc{select+cursor}.
 \begin{tabular}{|c|c|c|c|c|l}
 
 	\cline{0-4}
-	\multicolumn{2}{|c|}{ } & & & &
+	\multicolumn{3}{|c|}{ } & &
 	\\
-	\multicolumn{2}{|c|}{Project} & Wave & Synth & &
+	\multicolumn{3}{|c|}{Project} & Wave &
 	\\
-	\multicolumn{2}{|c|}{ } & & & &
+	\multicolumn{3}{|c|}{ } & &
 	\\
 	\cline{0-3}
 	& & & & & \\
 	Song & Chain & Phrase & Instr. & Table  & \begin{math} \leftarrow \end{math} Main Row \\
 	& & & & & \\
 	\cline{0-4}
-	\multicolumn{5}{|c|}{} \\
-	\multicolumn{5}{|c|}{Groove} \\
-	\multicolumn{5}{|c|}{} \\
+	\multicolumn{3}{|c|}{} & &
+	\\
+	\multicolumn{3}{|c|}{Groove} & Synth & Groove
+	\\
+	\multicolumn{3}{|c|}{} & &
+	\\
 	\cline{0-4}
 \end{tabular}
 %\caption{Screen Map.}
@@ -28,7 +31,7 @@ navigate between the screens by pressing \textsc{select+cursor}.
 
 The song, chain and phrase screens are used for sequencing and arranging. The wave, synth,
 instrument and table screens are used for sound programming. \footnote{There are also three hidden
-screens, not shown on the map: The file, word and help screens. We will get back to these later.}
+screens, not shown on the map: The file, word and help screens. We will come back to these later.}
 
 The remaining screens, project and groove, have more general purposes. The bulk of your activities will however probably be in the so-called "main row," in the middle of the map, as that's where the composing is done.
 
@@ -54,19 +57,18 @@ The song screen
 %(figure~\ref{fig:song})
 is the highest level of the sequencer. This is where you arrange your songs.
 
-The screen contains four columns, one for each channel. The columns contain lists of chains, which will be played from top to down. Different chains are used for different channels.
+The screen contains four columns, one for each channel. The columns contain lists of chains, which will be played in order from top to bottom. Different chains are used for different channels.
 
 To insert a chain, move the cursor to an empty step and press \textsc{a}. If you want to add a new
 chain, press \textsc{a} twice. To edit a chain, move the cursor to the chain number and press
-\textsc{select+right}. To remove a chain, you can either press \textsc{a} twice or
-press \textsc{b+a}.
+\textsc{select+right}. To remove a chain, press \textsc{b+a}.
 
 To start or stop playing all channels in the song screen, press \textsc{start}. To instantly re-start all channels in the song screen, press \textsc{select+start} (this has the same effect as pressing \textsc{start, start} quickly).
 
 \includegraphics[width=1cm]{tip}TIP!
 \begin{itemize}
-\item \textit{You can pull up down-below chains by pressing \textsc{b+a} on an empty step.}
-\item \textit{\textsc{b+up/down} does page up/down.}
+\item \textit{Pressing \textsc{b+a} on an empty step moves the chains below it upwards.}
+\item \textit{\textsc{b+up/down} navigates up/down by \$10 rows.}
 \item \textit{You can add or remove song screen bookmarks by tapping \textsc{b} three times \textsc{(b, b, b)}. This will shade the area under the cursor.}
 %	\marginpar{\includegraphics[width=1cm]{tip}TIP!}
 \end{itemize}
@@ -74,11 +76,11 @@ To start or stop playing all channels in the song screen, press \textsc{start}. 
 The number of rows in the song screen is limited to 255 (\$00-\$FE).
 
 \section{Chain Screen}
-Chains are used for stringing phrases together, thus creating a unit built out of many
-phrases. A chain can represent a longer rhythm block, a melody or a bass line.
+Chains are used for stringing phrases together, thus creating a unit composed of multiple
+phrases. A chain can represent a longer block of rhythm, such as a melody or a bass-line.
 
 The chain screen contains two columns. The first column contains the list of phrases that are
-to be stringed together, while the second column transposes the phrase on the same row.
+to be strung together, while the second column transposes the phrase on that row.
 
 \begin{figure}[hbtp]
 \centering
@@ -111,25 +113,27 @@ specific channel. The number of chains is limited to 128 (\$00-\$7F).
 
 The phrase screen is the most fundamental part of the sequencer; this is where you enter the actual note data. The phrase screen has four columns: the note column, the instrument column, and the command and command value columns.
 
-The different channels all share the same set of phrases; that is, any phrase may be played back on any channel. A phrase might however sound very different, depending on the channel it is played back on. Example: If you have programmed a phrase to play a melody using a pulse instrument, that phrase can be played back in either of the pulse channels with good results, but it usually doesn't make sense to play back the phrase in the wave or noise channels.
+Like chains, phrases may be played on any channel. A phrase might however sound very different depending on the channel it is played back on. Example: If you have programmed a phrase to play a melody using a pulse instrument, that phrase can be played back in either of the pulse channels with good results, but it usually doesn't make sense to play back the phrase in the wave or noise channels.
 
-The note column may look different depending on which instrument type is used. Most instruments present the note followed by octave. Instruments that play back samples (\textsc{kit}, \textsc{speech}) do however present the sample names instead.
+The note column may look different depending on which instrument type is used. Most instruments show the note followed by the octave. However, instruments that play back samples (\textsc{kit}, \textsc{speech}) show the sample or word names instead.
 
 The instrument column is used for selecting instruments. In total, you can use 64 different instruments, editable in the instrument screen.
 
 \includegraphics[width=1cm]{tip}TIP!
 \begin{itemize}
-\item \textit{It is possible to change the pitch without retrigging the instrument by leaving the instrument column empty.}
+\item \textit{It is possible to change the pitch without retrigging the instrument by leaving the instrument column empty. 
+You can remove the instrument number by pressing \textsc{B+A} in the instrument column.}
 %	\marginpar{\includegraphics[width=1cm]{tip}TIP!}
 \end{itemize}
 
-The command columns can be used to add effects to your phrase. For example, the K command kills the sound on the channel.
+The command column can be used to add effects to your phrase. For example, the K command kills the sound on the channel.
 
 The number of phrases is limited to 255 (\$00-\$FE). The number of the phrase that is being edited is displayed in the top left corner of the screen.
 
 \includegraphics[width=1cm]{tip}TIP!
 \begin{itemize}
-\item \textit{All phrases are 16 steps long by default, but it is also possible to set a shorter length by using the H (hop) command.}
+\item \textit{All phrases are 16 steps long by default, but it is also possible to set a shorter length by using the H (hop) command. 
+Placing H00 ends the phrase at the line before it is placed.}
 %	\marginpar{\includegraphics[width=1cm]{tip}TIP!}
 \end{itemize}
 
@@ -148,7 +152,7 @@ There are five types of instruments available:
 \begin{description}
 \item[\textsc{pulse}] This instrument type produces pulse waves, and is used in pulse channels 1 and 2.
 \item[\textsc{wave}] This instrument type can play back waves synthesized using the synth screen. It is used in the wave channel.
-\item[\textsc{kit}] This instrument type plays sampled kits, stored in \textsc{rom}. (The samples are stored in 4 bits, 11,468 kHz.) It is used in the wave channel.
+\item[\textsc{kit}] This instrument type plays sampled kits, stored in \textsc{rom}. (The samples are stored in 4-bit 11,468 Hz audio.) It is used in the wave channel.
 \item[\textsc{noise}] This instrument type produces filtered noise, and is used in the noise channel.
 \item[\textsc{speech}] This instrument is locked to instrument number \$40, and is used for programming speech. For learning how to generate speech, please read chapter \ref{speech-chapter}.
 \end{description}
@@ -158,11 +162,11 @@ You can change the instrument type by going to the type row and pressing \textsc
 Remember that instruments don't automatically play in the right channel. For example, if you want to use a kit instrument to play drum samples, you have to do the following:
 
 \begin{enumerate}
-\item Go to the song screen, move cursor to the wave column, and insert a new chain by tapping \textsc{a} twice.
+\item Go to the song screen, move cursor to the wave column, and insert a new chain by tapping \textsc{a}.
 \item	Edit the chain by pressing \textsc{select+right}.
-\item	Insert a new phrase by tapping \textsc{a} twice.
+\item	Insert a new phrase by tapping \textsc{a}.
 \item	Edit the phrase by pressing \textsc{select+right}. Now, you have a new phrase that is mapped to the wave channel.
-\item	Create a new instrument by moving the cursor to the instrument column and tapping \textsc{a} twice.
+\item	Create a new instrument by moving the cursor to the instrument column and tapping \textsc{a}.
 \item	Press \textsc{select+right} to edit the instrument.
 \item	Change the instrument type to \textsc{kit}.
 \item	Go back to the phrase screen to start using your new instrument.
@@ -184,10 +188,10 @@ These parameters are used in most instrument types.
 	\item[\textsc{type}] Use this to specify the instrument type.
 	\item[\textsc{length}] Change the sound length.
 	\item[\textsc{pan}] Pan the sound to left/right/both/none speakers. (Use the headphone output to hear the difference!)
-    \item[\textsc{p/l/v}] Controls the behavior of \textsc{p}, \textsc{l} and \textsc{v} commands. \textsc{A+u/d} switches pitch update speed: \textsc{fast} updates pitch at 360 Hz; \textsc{tick} updates pitch every tick; \textsc{step} is like \textsc{fast} except that \textsc{p} does pitch change instead of pitch bend; \textsc{drum} is like \textsc{fast} with logarithmic pitch, useful for \textsc{p} kicks. \textsc{A+l/r} changes vibrato shape between downwards triangle, saw and square, and upwards triangle, saw and square.
-    \item[\textsc{transp.}] When \textsc{on}, the pitch may be affected by project and table transposes.
-    \item[\textsc{table}] Selects a table to run when a note is played. If you want to edit the table, press \textsc{select+right} to go to the table screen. To create a new table, press \textsc{a,a}. To clone the table, press \textsc{select+(b,a)}.
-	\item[\textsc{automate}] This option extends the table functionality. When automation is activated, Little Sound Dj advances through the tables by one step for each time the instrument is triggered.
+    \item[\textsc{pitch}] Controls the behavior of \textsc{p}, \textsc{l} and \textsc{v} commands. \textsc{A+u/d} switches pitch update speed: \textsc{fast} updates pitch at 360 Hz; \textsc{tick} updates pitch every tick; \textsc{step} is like \textsc{fast} except that \textsc{p} changes the pitch only once instead of sliding; \textsc{drum} is like \textsc{fast} with logarithmic pitch, useful for \textsc{p} kicks. \textsc{A+l/r} changes vibrato shape between downwards triangle, saw and square, and upwards triangle, saw and square.
+    \item[\textsc{transp.}] When \textsc{on}, the pitch will be affected by project and table transposes. Turning transpose \textsc{off} is useful for kick drums, for example.
+	\item[\textsc{fx/speed}] Controls the rate of C and R commands, as well as P and V commands when pitch is set to \textsc{tick}. (P commands in the noise channel are also affected.) \textsc{fx/speed} value of 0 is the fastest rate, while \$F is the slowest.
+    \item[\textsc{table}] Selects a table to run when a note is played. If you want to edit the table, press \textsc{select+right} to go to the table screen. To create a new table, press \textsc{a,a}. To clone the table, press \textsc{select+(b,a)}. By default table is set to \textsc{play} however, pressing \textsc{A+//r} toggles the table to \textsc{step}. This option extends the table functionality. When \textsc{step} is activated, Little Sound Dj advances through the table one step each time the instrument is triggered.
 \end{description}
 
 \subsection{Pulse Instrument Parameters}
@@ -210,8 +214,8 @@ These parameters are used in most instrument types.
 The detune settings can be used to create interesting phase effects, when the same phrase is played on both pulse channels:
 
 \begin{description}
-	\item[\textsc{pu2 tune}] Detune pulse channel 2 in semitones.
-	\item[\textsc{pu fine}] Detune pulse channel 1 downwards, channel 2 upwards.
+	\item[\textsc{pu2 tsp}] Transpose pulse channel 2 in semitones.
+	\item[\textsc{finetune}] Detune pulse channel 1 downwards, channel 2 upwards.
 \end{description}
 
 \subsection{Wave Instrument Parameters}
@@ -222,17 +226,42 @@ The wave instrument can play back synth sounds generated by the soft synthesizer
 	\begin{center}
 		\fbox { \includegraphics{instr-wave} }
 	\end{center}
-	%\caption{Wave Instrument Screen}
-	%\label{fig:instr-wave}
+	\caption{Wave Instrument Screen}
+	\label{fig:instr-wave}
 \end{figure}
 
 \begin{description}
-	\item[\textsc{volume}] Set amplitude (0=0\%, 1=25\%, 2=50\%, 3=100\%)
-	\item[\textsc{synth}] Select the synth sound to play back. To edit the synth sound being used, press \textsc{select+up} to go to the \textsc{synth} screen. If you want to use a new synth, tap \textsc{a} twice.
-	\item[\textsc{play}] How to play back the synth sound: Once, loop, pingpong loop or manual. By selecting manual, only the first wave in the synth sound will be played, allowing you to step through the sound manually using the \textsc{f} command.
-	\item[\textsc{length}] Set the length of the synth sound.
-	\item[\textsc{repeat}] Set the loop point of the synth sound.
+	\item[\textsc{volume}] Set amplitude (0=0\%, 1=25\%, 2=50\%, 3=100\%) and pan
+	\item[\textsc{finetune}] Detune the synth by +\/-0-\$F
+	\item[\textsc{synth}] Select the synth sound to play back. To edit the synth sound being used, press \textsc{select+down} to go to the \textsc{synth} screen. If you want to use a new synth, tap \textsc{a} twice. If you want to clone the current synth to a new synth, press \textsc{select+b,a}.
+	\item[\textsc{play}] How to play back the synth sound: Once, loop, pingpong loop or manual. By selecting manual, only the first wave in the synth sound will be played, allowing you to select waves manually using the \textsc{f} command.
 	\item[\textsc{speed}] Set how fast the synth sound should be played back.
+	\item[\textsc{length}] Set the length of the synth sound.\footnotemark
+\footnotetext{For each length value, the following waves are played:
+\begin{center}
+\begin{tabular}{ |c|l| } 
+ \hline
+Length & Wave Frames \\ \hline
+0 & 0 \\ \hline
+1 & 0, \$F \\ \hline
+2 & 0, 7, \$F \\ \hline
+3 & 0, 5, \$A, \$F \\ \hline
+4 & 0, 3, 7, \$B, \$F \\ \hline
+5 & 0, 3, 6, 9, \$C, \$F \\ \hline
+6 & 0, 2, 5, 7, \$A, \$D, \$F \\ \hline
+7 & 0, 2, 4, 6, 9, \$B, \$D, \$F \\ \hline
+8 & 0, 1, 3, 5, 7, 9, \$B, \$D, \$F \\ \hline
+9 & 0, 1, 3, 5, 7, 8, 9, \$B, \$D, \$F \\ \hline
+\$A & 0, 1, 3, 4, 6, 7, 9, \$B, \$C, \$E, \$F \\ \hline
+\$B & 0, 1, 2, 4, 5, 7, 8, \$A, \$B, \$D, \$E, \$F \\ \hline
+\$C & 0, 1, 2, 3, 5, 6, 7, 9, \$A, \$B, \$D, \$E, \$F \\ \hline
+\$D & 0, 1, 2, 3, 4, 6, 7, 8, 9, \$B, \$C, \$D, \$E, \$F \\ \hline
+\$E & 0, 1, 2, 3, 4, 5, 6, 7, 9, \$A, \$B, \$C, \$D, \$E, \$F \\ \hline
+\$F & 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, \$A, \$B, \$C, \$D, \$E, \$F \\ \hline
+\end{tabular}
+\end{center}
+}
+	\item[\textsc{loop}] Set the loop point of the synth sound.
 \end{description}
 
 \subsection{Kit Instrument Parameters}
@@ -241,23 +270,23 @@ The wave instrument can play back synth sounds generated by the soft synthesizer
 	\begin{center}
 	\fbox {	\includegraphics{instr-kit} }
 	\end{center}
-	%\caption{Kit Instrument Screen}
-	%\label{fig:instr-kit}
+	\caption{Kit Instrument Screen}
+	\label{fig:instr-kit}
 \end{figure}
 
 \begin{description}
 	\item[\textsc{kit}] Choose the kits to use. The first kit will be used in the left note column in the phrase screen; the second kit will be used in the right note column in the phrase screen.
-	\item[\textsc{pitch}] Pitch shift.
+	\item[\textsc{finetune}] Pitch shift.
 	\item[\textsc{offset}] Set the start loop point. If \textsc{loop} is set to \textsc{off}, this value can be used for skipping the initial part of a sound.
 	\item[\textsc{len}] Set the sound length. (\textsc{aut}=always play the sample to its end.)
 	\item[\textsc{loop}] Loop the sample. (\textsc{off}=don't loop, \textsc{on}=loop sound and start playing from custom offset, \textsc{atk}=loop sample and start playing from the beginning.)
-	\item[\textsc{speed}] Select full speed or half speed.
+	\item[\textsc{speed}] Play the sample at full speed or half speed.
 	\item[\textsc{dist}] Select the algorithm that should be used when two kits are mixed together. \textsc{clip} is the default type. \textsc{shape} and \textsc{shape2} sound similar to \textsc{clip}, but with more high frequencies and less bass. \textsc{wrap} can be used to add some interesting digital distortion. When pressing \textsc{a+(left, left)} while \textsc{clip} value is selected, the program will jump out of range and play back sound from raw memory when clipping.
 \end{description}
 
 \includegraphics[width=1cm]{tip}TIP!
 \begin{itemize}
-	\item \textit{For those running LSDj on emulator or with backup gear, there is a Java application for replacing the original sample kits available at} \url{http://littlesounddj.com/lsd/latest/lsd-patcher/}.
+	\item \textit{For those running LSDj on emulator or with backup gear, there is a Java application for replacing the original sample kits available at} \url{https://github.com/Eiyeron/lsdpatch/releases}.
 \end{itemize}
 
 \subsection{Noise Instrument Parameters}
@@ -275,8 +304,8 @@ The wave instrument can play back synth sounds generated by the soft synthesizer
 	\item[\textsc{envelope}] First digit is initial amplitude (0-\$F); second digit is release (0, 8: none, 1-7: decrease amplitude, 9-\$F: increase amplitude).
     \item[\textsc{shape}] Noise generator control. The first digit changes pitch by octave, the second digit divides the frequency. Set the second digit to 0-7 for periodic noise, 8-\$F for random noise.
         For an in-depth technical explanation, refer to \href{https://google.com\&q=gbsound.txt}{gbsound.txt}.
-	\item[\textsc{s cmd}] When set to \textsc{free}, noise changing commands can randomly\footnotemark mute the sound. When set to \textsc{stable}, commands are limited so that sound will never be muted by accident.
-\footnotetext{There is a 0.4\% risk that the sound gets muted when a shape that ends with digit 8-F
+	\item[\textsc{s cmd}] When set to \textsc{free}, S commands may randomly\footnotemark mute the sound when changing noise shape. When set to \textsc{stable}, S commands are limited so that sound will never be muted by accident. This will restrict the shape of the instrument to either periodic noise (if the second digit of shape is 0-7) or random noise (if the second digit of shape is 8-\$F) only.
+\footnotetext{There is a 1 in 256 chance (0.4\%) that the sound gets muted when a shape that ends with digit 8-\$F
         is changed so that it ends with digit 0-7.}
 \end{description}
 
@@ -301,7 +330,7 @@ The default table speed of one tick per step can be changed using the G command.
 
 \subsection{Custom Envelope Example}
 
-The first digit in the envelope column sets the amplitude; the second digit sets for how many ticks that amplitude should remain.
+The first digit in the envelope column sets the amplitude; the second digit sets for how many ticks that amplitude should remain (0-\$E). Setting the second digit to \$F hops to the row number of the first digit.
 
 \begin{figure}[htpb]
 	\begin{center}
@@ -349,7 +378,7 @@ Grooves define the speed by which your phrases and tables are played back. They 
 	\label{fig:groove}
 \end{figure}
 
-To understand grooves, you need to know that the sequencer's time handling is based on an abstract time period called \emph{tick}. The length of a tick varies with the song tempo; at 128 BPM, a tick is approximately 1/50th of a second. In the groove screen, you can specify for how many ticks each note step should be played.
+To understand grooves, you need to know that the sequencer's time handling is based on an abstract time period called \emph{tick}. The length of a tick varies with the song tempo; at 128 BPM, a tick is approximately 1/50th of a second. In the groove screen, you can specify how many ticks each note step should be played.
 The groove in figure~\ref{fig:groove} would make the sequencer spend approximately 6/50th of a second on every note step.
 
 \begin{figure}[htbp]
@@ -441,11 +470,11 @@ Use these settings to specify values for the start and end of the sound. The pro
 		\fbox{\includegraphics{vshift-original}}
 	}
 
-	\subfloat[Vshifted signal. Vshift = 40, clip = wrap.]{
+	\subfloat[Vshifted signal. Vshift = 40, dist = wrap.]{
 	\fbox{\includegraphics{vshift-40}}
 	}
 
-	\subfloat[Vshifted signal. Vshift = 80, clip = wrap.]{
+	\subfloat[Vshifted signal. Vshift = 80, dist = wrap.]{
 		\fbox{\includegraphics{vshift-80}}
 	}
 	\caption{Vshift Examples}
@@ -492,18 +521,16 @@ The project screen (figure~\ref{fig:project}) contains settings that affect the 
 
 \begin{description}
 	\item[\textsc{tempo}] Change the tempo. It is possible to set a new tempo either by pressing
-\textsc{a+cursor}, or by tapping the \textsc{a} button in pace with the desired tempo. When being
+\textsc{a+cursor}, or by tapping the \textsc{a} button up to 4 times in pace with the desired tempo. When being
 slave in sync mode, it is possible to temporarily play a little faster or slower by pressing \textsc{a+left/right}.
 	\item[\textsc{transpose}] Adjust the pitch of the pulse and wave instruments, by a given number of semitones.
 	\item[\textsc{sync}] Activate link-up over the serial port. (Read more about this in chapter \ref{sync-chapter}!)
-
 	\item[\textsc{clone}] Select deep or slim chain cloning. Deep chain cloning will also clone the phrases of a chain when cloning, whereas slim cloning will re-use the old phrases. Read chapter 3 for a full explanation of cloning.
 	\item[\textsc{look}] Change the font and color set.
 	\item[\textsc{key delay/repeat}] Set repeat delay and repeat rate of the Game Boy buttons.
 	\item[\textsc{prelisten}] Play notes and instruments while entering them.
-
 	\item[\textsc{help}] Enter help screen. The help screen contains a quick reference for button presses and a command list.
-	\item[\textsc{clean song data}] Clear all phrases and chains that are not used in the song. Also, if there are several phrases with the same content, they will be reduced to one. \label{clean-song-data}
+	\item[\textsc{clean song data}] Clear all phrases and chains that are not used in the song. Also, if duplicate phrases with the same content exist, they will be reduced to only one phrase. \label{clean-song-data}
 	\item[\textsc{clean instr data}] Clear all instruments, tables, synths and waves that are not used in the song.
 	\item[\textsc{load/save song}] Enter file manager. \footnote{The file manager is only available for cartridges that have 1 Mbit SRAM or more. In case your cartridge doesn't have 1 Mbit SRAM, this button will be replaced with a \textsc{reset memory} button.}
 \end{description}
@@ -576,7 +603,8 @@ A lot of useful data is displayed in the screen border (figure~\ref{fig:border})
 \item Current tempo, in beats per minute (\textsc{bpm}).
 \item Notes being played.
 \item Sync information.
-\item Mute. (The characters will be lit when pressing \textsc{b+select} or \textsc{b+start}.)
+\item Mute. (Channel indicators change to \textsc{m} when pressing \textsc{b+select} or \textsc{b+start}.)
+\item Oscilloscope. (The current waveform being played in the wave channel is shown.)
 \item Screen map.
 \end{enumerate}
 

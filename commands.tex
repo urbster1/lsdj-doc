@@ -17,12 +17,38 @@ Starts or stops tables in the current channel. Use the table number you want to 
 \item[A20] stop table
 \end{description}
 
+\section{B: mayBe}
+
+B determines the probability that notes will play. It can also be used to probabilistically hop in a table.
+
+\subsection{B in Phrases}
+
+Controls how likely it is that the note or sample(s) to the left will be played. The first digit sets probability for the left kit, the second digit sets the probability for notes and right kit.
+
+\begin{description}
+    \item[B00] Never play note
+    \item[B0F] Always play note/right kit sample
+    \item[BF0] Always play left kit sample
+	\item[B08] Play note/right kit sample about 50% of the time
+\end{description}
+
+\subsection{B in Tables}
+
+In the table screen, B is used to make a hop that only happens sometimes. The first digit sets probability, the second digit sets destination row.
+
+\begin{description}
+\item Example:
+\item[BF5] Hop to row 5, 15 times out of 16.
+\item[B84] Hop to row 4, about 50% of the time.
+\item[B03] Never hop to row 3
+\end{description}
+
 \section{C: Chord}
 
 \subsection{For Pulse and Wave Instruments:}
 
 \label{command-chord}
-Produce chords by doing a simple arpeggio that extends the base note with the given semitones.
+Produce chords by doing a simple arpeggio that extends the root note with the given semitones.
 
 \begin{description}
 \item[C37] plays a minor chord: 0, 3, 7, 0, 3, 7, 0, 3, 7, \ldots
@@ -39,14 +65,14 @@ Applies S command with the given value every second tick.
 
 \section{D: Delay}
 
-Delay the triggering of a note with the given number of ticks.
+Delay the triggering of a note by the given number of ticks.
 
 \section{E: Amplitude Envelope}
 
 This command functions in two different ways, depending on which instrument type it is used on.
 
 \subsection{For Pulse and Noise Instruments}
-The first value digit sets the initial amplitude (0=min, \$F=max); the second digit sets the release (0,8: no change, 1-7: decrease, 9-\$F: increase).
+The first digit value sets the initial amplitude (0=min, \$F=max); the second digit sets the release (0,8: no change, 1-7: decrease, 9-\$F: increase).
 
 \subsection{For Wave Instruments}
 \begin{description}
@@ -59,14 +85,14 @@ The first value digit sets the initial amplitude (0=min, \$F=max); the second di
 \section{F: Wave Frame/Finetune}
 
 \subsection{For Pulse Instruments:}
-The first digit sets \textsc{pu2 tune}, the second \textsc{pu fine}.
+The first digit sets \textsc{pu2 tsp}, the second \textsc{finetune}.
 See section~\ref{detune}.
 
 \subsection{For Kit Instruments:}
 Modifies the sample position. \$00-\$7F steps forward, \$80-\$FF steps back.
 
 \subsection{For Wave Instruments:}
-Change the wave frame that's being played on the wave channel. This command is relative, meaning that the command value will be added to the current frame number. This can be used for playing through synth sounds manually.
+Change the wave frame that's being played on the wave channel. This command is relative, meaning that the command value will be added to the current frame number. This can be used for playing synth sounds manually.
 
 \includegraphics[width=1cm]{tip}TIP!
 \begin{itemize}
@@ -112,21 +138,21 @@ In the table screen, H is used for creating table loops. The first digit sets ho
 
 \begin{description}
 \item Example:
-\item[H21] hop twice to table position 1.
-\item[H04] hop to table position 4 forever.
+\item[H21] Hop twice to table position 1.
+\item[H04] Hop to table position 4 forever.
 \end{description}
 
 \section{K: Kill Note}
 
 \begin{description}
 \item Example:
-\item[K00] kill note instantly
-\item[K03] kill note after 3 ticks
+\item[K00] Kill note instantly
+\item[K03] Kill note after 3 ticks
 \end{description}
 
 \section{L: Slide}
 
-Slides to the target note in the given duration. If the instrument's \textsc{p/l/v} setting is \textsc{tick}, the duration is given in ticks, otherwise in n/360 seconds.
+Slides to the target note in the given duration. If the instrument's \textsc{pitch} setting is \textsc{tick}, the duration is given in ticks, otherwise in n/360 seconds.
 
 Example:
 
@@ -141,7 +167,7 @@ This will result in a slide that starts with C-4, bends to F-4, and then quickly
 
 \subsection{L in Tables}
 
-The L command also works in the left table command column, using the transpose column to set target note relative to the base note.
+The L command also works in the left table command column, using the transpose column to set target note relative to the root note.
 
 \begin{figure}[htbp]
 	\begin{center}
@@ -151,7 +177,7 @@ The L command also works in the left table command column, using the transpose c
 	% \label{fig:synth}
 \end{figure}
 
-Regular transposes and slides are added together independently. In the above example, step 0 transposes one octave up. In step 1, the L command starts sliding one octave down while keeping the transpose from step 0 unchanged. In step 2, the L command is allowed to play out while the transpose stays one octave up. After some time, L will stop one octave down, cancelling out the transpose and in practice returning to the base note.
+Regular transposes and slides are added together independently. In the above example, step 0 transposes one octave up. In step 1, the L command starts sliding one octave down while keeping the transpose from step 0 unchanged. In step 2, the L command is allowed to play out while the transpose stays one octave up. After some time, L will stop one octave down, cancelling out the transpose and in practice returning to the root note.
 
 \section{M: Master Volume}
 
@@ -161,10 +187,10 @@ Values 0-7 are used to specify absolute volumes. Values 8-\$F give the volume a 
 
 \begin{description}
 \item Examples:
-\item[M77] maximize volume
-\item[M08] minimize left volume, leave right volume unchanged
-\item[M99] increase volume with 1 step
-\item[MFE] decrease left volume with 1 step, right volume with 2 steps
+\item[M77] Maximize volume
+\item[M08] Minimize left volume, leave right volume unchanged
+\item[M99] Increase volume with 1 step
+\item[MFE] Decrease left volume with 1 step, right volume with 2 steps
 \end{description}
 
 \section{O: Set Output}
@@ -175,11 +201,12 @@ Pan channel to left, right, none or both outputs.
 
 \subsection{For Pulse, Wave and Kit Instruments:}
 
-Does a pitch change with the given speed. The behavior depends on the instrument's \textsc{p/l/v} setting:
+Does a pitch change with the given speed. The behavior depends on the instrument's \textsc{pitch} setting:
 
 \begin{description}
-    \item[\textsc{fast}] Pitch bend that updates at 360 Hz.
-    \item[\textsc{tick}] Pitch bend that updates every tick.
+    \item[\textsc{drum}] Logarithmic pitch bend that updates at 360 Hz. Useful for drum sounds.
+	\item[\textsc{fast}] Pitch bend that updates at 360 Hz.
+    \item[\textsc{tick}] Pitch bend that updates every tick. Speed can be controlled by changing \textsc{fx/speed}.
     \item[\textsc{step}] Immediate pitch change without bend.
 \end{description}
 
@@ -196,7 +223,7 @@ Applies S command with the given value every tick.
 
 \section{R: Retrig the Latest Played Note}
 
-Play the latest played note again. The first digit modulates the volume (0=no change, 1-7=increase, 8-\$F=decrease). The second digit sets a period for the retriggering, zero being the fastest and $E the slowest. Period $F means only retrig once.
+Play the latest played note again. The first digit modulates the volume (0=no change, 1-7=increase, 8-\$F=decrease). The second digit sets a period for the retriggering, zero being the fastest and \$E the slowest. Second digit of \$F means only retrig once.
 
 \begin{description}
 \item Example:
@@ -226,19 +253,22 @@ The command is relative, meaning that the digits are independently added to the 
 
 \section{T: Tempo}
 
-Change the tick frequency so that the given \textsc{bpm} will be produced. The \textsc{bpm} setting will be accurate only if the active groove has 6 ticks per note step. If the groove has some other number of ticks per note step, the \textsc{bpm} value should be adjusted according to the formula
+Change the tick frequency so that the given \textsc{tempo} will be produced (in BPM). The \textsc{tempo} setting will be accurate only if the active groove has 6 ticks per note step. If the groove has some other number of ticks per note step, the \textsc{tempo} value should be adjusted according to the formula
 \begin{math}
 lsdj\_bpm = (desired\_bpm \times ticks\_per\_step)/{6}
 \end{math}.
 
+Setting a value of \$00-\$27 will set the tempo to 256-295 BPM.
+
 \begin{description}
 \item Example:
-\item[T80] set tempo to 128 (\$80) \textsc{bpm}
+\item[T80] set tempo to 128 BPM
+\item[T00] set tempo to 256 BPM
 \end{description}
 
 \section{V: Vibrato}
 
-Add vibrato. Not available for noise instruments. The vibrato speed and shape depends on the instrument's \textsc{p/l/v} setting.
+Add vibrato. Not available for noise instruments. The vibrato speed and shape depends on the instrument's \textsc{pitch} setting.
 
 \begin{description}
 \item Example:
@@ -256,7 +286,7 @@ The first digit sets synth sound speed, the second sets synth sound length. 0 = 
 
 \section{Z: RandomiZe}
 
-The Z command repeats the last non-Z command, adding a random number to the original command value. The Z value controls the maximum value of each digit to be added.
+The Z command repeats the last non-Z command, adding a random number to the original command value. The Z value controls the maximum value of each digit to be added (each digit is added separately).
 
 \begin{description}
 \item Example:
@@ -265,4 +295,4 @@ The Z command repeats the last non-Z command, adding a random number to the orig
 \item[Z22] adds one of 0, 1, 2, 10, 11, 12, 20, 21, 22 to the original value.
 \end{description}
 
-Note: Randomize does not work with Hop, Groove and Delay commands at the moment.
+Note: Randomize does not work with mayBe, Hop, Groove or Delay commands at the moment.
